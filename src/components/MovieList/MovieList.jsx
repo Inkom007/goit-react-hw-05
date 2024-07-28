@@ -6,15 +6,20 @@ const MovieList = ({ movies = [] }) => {
 
   return (
     <div>
-      <ul>
+      <ul className={s.list}>
         {movies.map((movie) => (
-          <li key={movie.id}>
+          <li className={s.item} key={movie.id}>
             <Link
               className={s.link}
               to={`/movies/${movie.id}`}
               state={location}
             >
-              {movie.title}
+              {" "}
+              <img
+                className={s.img}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              />
+              <p>{movie.title}</p>
             </Link>
           </li>
         ))}

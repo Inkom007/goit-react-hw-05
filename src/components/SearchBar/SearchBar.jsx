@@ -1,3 +1,5 @@
+import s from "./SearchBar.module.css";
+
 const SearchBar = ({ onSubmit, filterValue }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -8,12 +10,15 @@ const SearchBar = ({ onSubmit, filterValue }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          className={s.input}
           name="search"
           type="search"
           placeholder="Search"
           defaultValue={filterValue}
         />
-        <button type="submit">Search</button>
+        <button className={s.button} type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

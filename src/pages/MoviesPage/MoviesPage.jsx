@@ -3,7 +3,6 @@ import MovieList from "../../components/MovieList/MovieList";
 import { useEffect, useState } from "react";
 import { fetchSearchMovies } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
-import toast from "react-hot-toast";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);

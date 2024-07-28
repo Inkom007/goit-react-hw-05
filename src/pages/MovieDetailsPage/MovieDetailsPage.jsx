@@ -7,6 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { fetchMoviesById } from "../../services/api";
+import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const defaultImg =
@@ -46,19 +47,29 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <Link to={goBackRef.current}>Go back!</Link>
-      <img src={posterUrl} alt={movie.title} />
-      <h2>
-        {movie.title}({releaseYear})
-      </h2>
-      <p>User Score: {score}%</p>
-      <h3>Overview</h3>
-      <p>{movie.overview}</p>
-      <h3>Genres</h3>
-      <p>{genres}</p>
-      <div>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
+      <Link className={s.link} to={goBackRef.current}>
+        Go back
+      </Link>
+      <div className={s.wrapper}>
+        <img className={s.img} src={posterUrl} alt={movie.title} />
+        <div>
+          <h2>
+            {movie.title}({releaseYear})
+          </h2>
+          <p>User Score: {score}%</p>
+          <h3>Overview</h3>
+          <p>{movie.overview}</p>
+          <h3>Genres</h3>
+          <p>{genres}</p>
+        </div>
+      </div>
+      <div className={s.links}>
+        <NavLink className={s.link} to="cast">
+          Cast
+        </NavLink>
+        <NavLink className={s.link} to="reviews">
+          Reviews
+        </NavLink>
       </div>
       <Suspense fallback={"Please wait.Is loading.."}>
         <Outlet />

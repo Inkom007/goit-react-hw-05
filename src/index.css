@@ -1,5 +1,6 @@
 body {
-  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
+  background: #3a3a3a;
+  color: #f3ecec;
 }
 
 ul {
@@ -11,7 +12,22 @@ a {
 }
 
 h1 {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: black;
+  font-size: 48px;
+  color: #da70d6; /* Bright purple color */
+  background: linear-gradient(
+    90deg,
+    #8a2be2,
+    #da70d6
+  ); /* Gradient background */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 5px rgba(138, 43, 226, 0.5), 0 0 10px rgba(138, 43, 226, 0.5); /* Subtle glow effect */
+
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+img {
+  display: block;
+  width: 200px;
 }
