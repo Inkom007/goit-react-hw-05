@@ -1,11 +1,24 @@
-import { useEffect, useState } from "react";
-import { NavLink, useParams, Outlet } from "react-router-dom";
+import { Suspense, useEffect, useRef, useState } from "react";
+import {
+  Link,
+  NavLink,
+  useParams,
+  Outlet,
+  useLocation,
+} from "react-router-dom";
 import { fetchMoviesById } from "../../services/api";
 
 const MovieDetailsPage = () => {
+  const defaultImg =
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
   const params = useParams();
 
   const [movie, setMovie] = useState(null);
+
+  const location = useLocation();
+
+  const goBackRef = useRef(location?.state || "/movies");
 
   useEffect(() => {
     fetchMoviesById(params.movieId).then((data) => setMovie(data));
@@ -15,7 +28,9 @@ const MovieDetailsPage = () => {
     return <h2>Loading...</h2>;
   }
 
-  const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const posterUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : defaultImg;
 
   const releaseYear = movie.release_date
     ? new Date(movie.release_date).getUTCFullYear()
@@ -31,6 +46,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
+      <Link to={goBackRef.current}>Go back!</Link>
       <img src={posterUrl} alt={movie.title} />
       <h2>
         {movie.title}({releaseYear})
@@ -44,7 +60,9 @@ const MovieDetailsPage = () => {
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
       </div>
-      <Outlet />
+      <Suspense fallback={"Please wait.Is loading.."}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

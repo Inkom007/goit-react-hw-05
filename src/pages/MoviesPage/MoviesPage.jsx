@@ -3,6 +3,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import { useEffect, useState } from "react";
 import { fetchSearchMovies } from "../../services/api";
 import { useSearchParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -16,10 +17,6 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      if (!filterValue) {
-        setMovies([]);
-        return;
-      }
       try {
         const data = await fetchSearchMovies(filterValue);
         setMovies(data);
@@ -32,6 +29,7 @@ const MoviesPage = () => {
   return (
     <div>
       <SearchBar filterValue={filterValue} onSubmit={onSubmit} />
+
       <MovieList movies={movies} />
     </div>
   );
