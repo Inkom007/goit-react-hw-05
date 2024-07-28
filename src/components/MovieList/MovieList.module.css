@@ -1,16 +1,4 @@
-body {
-  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-h1 {
+.link {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: black;

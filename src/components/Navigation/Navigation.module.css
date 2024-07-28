@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  color: black;
+}
+
+.active {
+  color: rgb(76, 12, 12);
+}
